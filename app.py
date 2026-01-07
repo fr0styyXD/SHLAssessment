@@ -27,7 +27,7 @@ st.sidebar.header("Settings")
 
 API_URL = st.sidebar.text_input(
     "API URL",
-    value="shlassessment-production-4cb9.up.railway.app/health",
+    value="https://shlassessment-production-4cb9.up.railway.app/health",
     help="URL of the FastAPI backend"
 )
 
@@ -312,3 +312,4 @@ This system recommends SHL assessments based on:
 # Footer
 
 st.markdown("---")
+
