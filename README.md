@@ -72,18 +72,14 @@ SHL Website
   - Test type(s)
   - Job levels
   - Duration
-  - Remote & adaptive support
+  - Remote & adaptive support
 
-### 2. Data Enrichment (Reverse-HyDE)
-- Uses an OpenAI LLM to generate **synthetic recruiter-style queries** per assessment
-- Bridges the semantic gap between user queries and assessment descriptions
-
-### 3. Embeddings & Retrieval
+### 2. Embeddings & Retrieval
 - **OpenAI `text-embedding-3-small`**
 - FAISS cosine similarity index
 - High-recall first-stage retrieval (top-50 to top-100 candidates)
 
-### 4. Training-Aware Re-Ranking
+### 3. Training-Aware Re-Ranking
 Final ranking score is a **weighted combination** of:
 - Training dataset overlap (dominant signal)
 - Query ↔ assessment name/description overlap
@@ -105,7 +101,7 @@ This design intentionally prioritizes **Recall@10** over early precision.
 |------|----------------|
 | Baseline (embeddings only) | ~3% |
 | + Enrichment | ~5% |
-| + Training-aware re-ranking | **~11%** |
+| + Training-aware re-ranking | **~15%** |
 
 Evaluation logic and CSV generation are implemented in:
 ```
@@ -116,7 +112,12 @@ evaluation/evaluate.py
 
 ## 🧾 API Endpoints (FastAPI)
 
+https://shlassessment-production-4cb9.up.railway.app
+
 ### Health Check
+
+https://shlassessment-production-4cb9.up.railway.app/health
+
 ```
 GET /health
 ```
@@ -130,6 +131,9 @@ Response:
 ```
 
 ### Recommendation Endpoint
+
+https://shlassessment-production-4cb9.up.railway.app/recommend
+
 ```
 POST /recommend
 ```
@@ -164,6 +168,9 @@ Response (schema strictly follows SHL PDF specification):
 ---
 
 ## 🖥️ Web Application (Streamlit)
+
+https://shl-assessment-retriever.streamlit.app
+
 The Streamlit frontend supports:
 - Text-based queries
 - Full job description input
