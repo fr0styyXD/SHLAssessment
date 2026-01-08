@@ -225,7 +225,7 @@ python evaluation/evaluate.py
 
 ## 🔮 Limitations & Future Work
 - Limited labeled training data (10 queries)
-- Rule-based re-ranking could be replaced with learning-to-rank
+- Rule-based re-ranking could be replaced with rank learning (learning-to-rank)
 - User feedback loop could further improve Recall@K
 - Larger evaluation dataset would improve robustness
 
